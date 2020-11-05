@@ -14,9 +14,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Anst\\": "src/Anst"
+      "Anst\\": "Anst"
     }
   },
   "scripts": {
+    "post-install-cmd": "php -r \"copy('Anst/Command/a','a');\""
   }
 }
