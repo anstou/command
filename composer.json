@@ -18,6 +18,8 @@
     }
   },
   "scripts": {
-    "post-install-cmd": "php -r \"copy('Anst/Command/a','a');\""
+    "post-install-cmd": [
+      "Anst\\Command\\PackageInstall::install"
+    ]
   }
 }

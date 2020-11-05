@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Command\Commands\{namespace};
+namespace Anst\Command\Commands\{namespace};
 
 
-use Command\KernelCommand;
+use Anst\Command\KernelCommand;
 
 class {name} extends KernelCommand
 {
