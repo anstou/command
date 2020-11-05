@@ -23,7 +23,7 @@ class KernelCommand
      * 根据值的排序来对应
      * @var array
      */
-    protected $params = [];
+    protected array $params = [];
 
     private $paramInit = false;
 

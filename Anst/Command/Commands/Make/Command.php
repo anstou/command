@@ -25,7 +25,7 @@ class Command extends KernelCommand
      * 根据值的排序来对应
      * @var array
      */
-    protected $params = [
+    protected array $params = [
         'command'
     ];
 
@@ -37,13 +37,26 @@ class Command extends KernelCommand
             exit;
         }
         $namespace = ucfirst(strtolower($command[0]));
-        $dirPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $namespace;
+        $app = \Yaf_Application::app();
+        if ($app) {
+
+            $dirPath = $app->getAppDirectory() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $namespace;
+
+        } else {
+            $dirPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $namespace;
+        }
         if (!file_exists($dirPath)) mkdir($dirPath);
 
 
         $text = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'command.anst');
         $name = ucfirst(strtolower($command[1]));
         $text = str_replace('{name}', $name, $text);
+        $app = \Yaf_Application::app();
+        if ($app) {
+            $namespace = 'Commands\\' . $namespace;
+        } else {
+            $namespace = 'Anst\\Command\\Commands\\' . $namespace;
+        }
         $text = str_replace('{namespace}', $namespace, $text);
         $text = str_replace('{command}', strtolower($namespace) . ':' . strtolower($name), $text);
         file_put_contents($dirPath . DIRECTORY_SEPARATOR . $name . '.php', $text);

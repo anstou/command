@@ -12,7 +12,9 @@ class PackageInstall
             //非yaf内
             $path = __DIR__ . '/../../a';
         } else if ($app) {
-            $path = \Yaf_Application::app()->getAppDirectory() . '/../a';
+            $path = $app->getAppDirectory() . '/../a';
+            $commandPath = $app->getAppDirectory() . DIRECTORY_SEPARATOR . 'library' . DIRECTORY_SEPARATOR . 'Commands';
+            if (!is_dir($commandPath)) mkdir($commandPath);
         } else {
             throw new \Exception('非yaf内调用需要手动将a文件复制到根目录');
         }

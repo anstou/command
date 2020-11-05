@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Anst\Command\Commands\{namespace};
+namespace {namespace};
 
 
 use Anst\Command\KernelCommand;
@@ -12,7 +12,7 @@ class {name} extends KernelCommand
      * 命令的名字
      * @var string
      */
-    protected $name = '{name}';
+    protected string $name = '{name}';
 
     /**
      * 运行命令
@@ -24,14 +24,14 @@ class {name} extends KernelCommand
      * 命令的作用
      * @var string
      */
-    protected $description = '';
+    protected string $description = '';
 
     /**
      * 接受的参数名
      * 根据值的排序来对应 如果get获取数组中不存在的将会报错
      * @var array
      */
-    protected $params = [
+    protected array $params = [
         'name'
     ];
 
