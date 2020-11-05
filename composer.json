@@ -1,0 +1,22 @@
+{
+  "name": "anstou/command",
+  "description": "快速创建适用于yaf的运行命令",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "AnstOu",
+      "email": "anstou@163.com"
+    }
+  ],
+  "require": {
+    "PHP": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Anst\\": "src/Anst"
+    }
+  },
+  "scripts": {
+  }
+}
