@@ -7,17 +7,13 @@ class PackageInstall
 {
     public static function install($a)
     {
-        $app = \Yaf_Application::app();
-        if ($a->isDevMode() || is_null($app)) {
-            //非yaf内
-            $path = __DIR__ . '/../../a';
-        } else if ($app) {
-            $path = $app->getAppDirectory() . '/../a';
-            $commandPath = $app->getAppDirectory() . DIRECTORY_SEPARATOR . 'library' . DIRECTORY_SEPARATOR . 'Commands';
-            if (!is_dir($commandPath)) mkdir($commandPath);
-        } else {
-            throw new \Exception('非yaf内调用需要手动将a文件复制到根目录');
+        $library = realpath(__DIR__ . '/../../../../..' . DIRECTORY_SEPARATOR . 'application/library');
+        if (!is_dir($library)) {
+            throw new \Exception($library . '目录不存在,请确定是否为yaf项目!');
         }
+        $path = realpath(__DIR__ . '/../../../../../a');
+        $commandPath = realpath(__DIR__ . '/../../../../..' . DIRECTORY_SEPARATOR . 'application/library' . DIRECTORY_SEPARATOR . 'Commands');
+        if (!is_dir($commandPath)) mkdir($commandPath);
         copy(__DIR__ . '/a', $path);
     }
 }

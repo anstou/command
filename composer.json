@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "post-root-package-install": [
+    "post-create-project-cmd": [
       "Anst\\Command\\PackageInstall::install"
     ]
   }
