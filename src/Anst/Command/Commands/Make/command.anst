@@ -1,0 +1,45 @@
+<?php
+
+
+namespace Command\Commands\{namespace};
+
+
+use Command\KernelCommand;
+
+class {name} extends KernelCommand
+{
+    /**
+     * 命令的名字
+     * @var string
+     */
+    protected $name = '{name}';
+
+    /**
+     * 运行命令
+     * @var string
+     */
+    protected $command = '{command}';
+
+    /**
+     * 命令的作用
+     * @var string
+     */
+    protected $description = '';
+
+    /**
+     * 接受的参数名
+     * 根据值的排序来对应 如果get获取数组中不存在的将会报错
+     * @var array
+     */
+    protected $params = [
+        'name'
+    ];
+
+
+    public function handle()
+    {
+        $name = $this->get('name');
+
+    }
+
+}
