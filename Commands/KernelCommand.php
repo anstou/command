@@ -42,7 +42,7 @@ class KernelCommand
                 exit;
             }
             static::$argv = array_slice($argv, 2);
-            $class = __NAMESPACE__ . '\\Commands\\' . implode('\\', $command);
+            $class = __NAMESPACE__ . '\\' . implode('\\', $command);
             if (class_exists($class)) {
                 $obj = new $class;
                 if ($obj instanceof KernelCommand) {
