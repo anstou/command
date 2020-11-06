@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+
+<?php
+define('RUN_START', time());
+define('APP_PATH', __DIR__);
+error_reporting(E_ALL ^ E_WARNING);
+$config = APP_PATH . '/conf/application.ini';
+if (!file_exists($config)) throw new \Exception($config . '不存在!');
+
+$app = new \Yaf_Application($config);
+
+include 'vendor/autoload.php';
+$app->execute(function ($argc, $argv) {
+    (new \Commands\KernelCommand())->run($argc, $argv);
+}, $argc, $argv);
