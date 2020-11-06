@@ -14,12 +14,11 @@
   },
   "autoload": {
     "psr-4": {
-      "Anst\\": "Anst"
+      "Commands\\": "Commands"
     }
   },
   "scripts": {
     "post-create-project-cmd": [
-      "Anst\\Command\\PackageInstall::install"
     ]
   }
 }
