@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Anst\Command\Commands\Make;
+namespace Commands\Make;
 
 
-use Anst\Command\KernelCommand;
+use Commands\KernelCommand;
 
 class Command extends KernelCommand
 {
@@ -51,12 +51,7 @@ class Command extends KernelCommand
         $text = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'command.anst');
         $name = ucfirst(strtolower($command[1]));
         $text = str_replace('{name}', $name, $text);
-        $app = \Yaf_Application::app();
-        if ($app) {
-            $namespace = 'Commands\\' . $namespace;
-        } else {
-            $namespace = 'Anst\\Command\\Commands\\' . $namespace;
-        }
+        $namespace = 'Commands\\' . $namespace;
         $text = str_replace('{namespace}', $namespace, $text);
         $text = str_replace('{command}', strtolower($namespace) . ':' . strtolower($name), $text);
         file_put_contents($dirPath . DIRECTORY_SEPARATOR . $name . '.php', $text);

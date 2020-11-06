@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Anst\Command;
-
+namespace Commands;
 
 class KernelCommand
 {
