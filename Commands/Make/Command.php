@@ -48,13 +48,22 @@ class Command extends KernelCommand
         if (!file_exists($dirPath)) mkdir($dirPath);
 
 
+
         $text = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'command.anst');
         $name = ucfirst(strtolower($command[1]));
         $text = str_replace('{name}', $name, $text);
         $namespace = 'Commands\\' . $namespace;
         $text = str_replace('{namespace}', $namespace, $text);
-        $text = str_replace('{command}', strtolower($namespace) . ':' . strtolower($name), $text);
-        file_put_contents($dirPath . DIRECTORY_SEPARATOR . $name . '.php', $text);
+        $command = explode('\\', $namespace);
+        $prefix = strtolower(end($command));
+        $text = str_replace('{command}', $prefix . ':' . strtolower($name), $text);
+
+        $filename = $dirPath . DIRECTORY_SEPARATOR . $name . '.php';
+        if (file_put_contents($filename, $text)) {
+            $this->log('创建成功,运行命令为,' . $prefix . ':' . strtolower($name));
+        } else {
+            $this->log('命令创建失败');
+        }
     }
 
 }

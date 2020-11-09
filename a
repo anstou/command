@@ -2,9 +2,10 @@
 
 <?php
 define('RUN_START', time());
-define('APP_PATH', __DIR__);
+define('APP_PATH', realpath(__DIR__));
 error_reporting(E_ALL ^ E_WARNING);
-$config = APP_PATH . '/conf/application.ini';
+
+$config = APP_PATH . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'application.ini';
 if (!file_exists($config)) throw new \Exception($config . '不存在!');
 
 $app = new \Yaf_Application($config);
