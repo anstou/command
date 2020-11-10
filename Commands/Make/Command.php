@@ -39,14 +39,11 @@ class Command extends KernelCommand
         $namespace = ucfirst(strtolower($command[0]));
         $app = \Yaf_Application::app();
         if ($app) {
-
-            $dirPath = $app->getAppDirectory() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $namespace;
-
+            $dirPath = realpath($app->getAppDirectory() . DIRECTORY_SEPARATOR . 'library') . DIRECTORY_SEPARATOR . 'Commands' . DIRECTORY_SEPARATOR . $namespace;
         } else {
             $dirPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $namespace;
         }
         if (!file_exists($dirPath)) mkdir($dirPath);
-
 
 
         $text = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'command.anst');

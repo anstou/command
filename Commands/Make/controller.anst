@@ -1,0 +1,6 @@
+<?php
+
+class {name} extends \Yaf_Controller_Abstract
+{
+
+}

@@ -85,8 +85,8 @@ class KernelCommand
         if (!$this->paramInit) {
             $this->params = array_values($this->params);
             $values = [];
-            foreach ($this->params as $k => $name) {
-                $values[$name] = KernelCommand::$argv[$k] ?? null;
+            foreach ($this->params as $k => $paramName) {
+                $values[$paramName] = KernelCommand::$argv[$k] ?? null;
             }
             $this->_params = &$values;
             $this->paramInit = true;

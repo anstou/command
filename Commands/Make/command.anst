@@ -18,7 +18,7 @@ class {name} extends KernelCommand
      * 运行命令
      * @var string
      */
-    protected $command = '{command}';
+    protected string $command = '{command}';
 
     /**
      * 命令的作用

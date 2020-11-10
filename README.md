@@ -9,4 +9,6 @@
 | ---        |
 | php a make:command  指令名:运行口令      |
 | php a route:list #仅在安装了anstou/route才有效,否则报错        |
-| 管线        |
+| php a make:module {module_name} #创建模块        |
+| php a make:control {module}/{control} #创建控制器,如果模块不存在会顺便创建模块        |
+
