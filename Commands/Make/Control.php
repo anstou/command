@@ -40,12 +40,11 @@ class Control extends KernelCommand
     {
         $moduleController = explode('/', $this->get('moduleController'));
         $module = ucfirst(strtolower($moduleController[0] ?? ''));
-        $controller = ucfirst(strtolower($moduleController[1]));
+        $controller = ucfirst(strtolower($moduleController[1] ?? ''));
 
         if (!preg_match("/^[a-z|A-Z]*$/", $module) || empty($module)) throw new \Exception('module需要为纯英文');
         if (!preg_match("/^[a-z|A-Z]*$/", $controller) || empty($controller)) throw new \Exception('controller需要为纯英文');
 
-        $app = \Yaf_Application::app();
         $modulePath = \Yaf_Application::app()->getAppDirectory() . 'modules' . DIRECTORY_SEPARATOR . $module;
         if (!is_dir($modulePath)) {
             $argv = ['a', 'make:module', $module];
