@@ -57,6 +57,7 @@ class Command extends KernelCommand
 
         $filename = $dirPath . DIRECTORY_SEPARATOR . $name . '.php';
         if (file_put_contents($filename, $text)) {
+            chmod($filename, 0777);
             $this->log('创建成功,运行命令为,' . $prefix . ':' . strtolower($name));
         } else {
             $this->log('命令创建失败');

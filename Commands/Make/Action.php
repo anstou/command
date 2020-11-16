@@ -61,12 +61,13 @@ class Action extends KernelCommand
     public function {$action}Action()
     {
 
-
+        return false;
     }
 
 FNC;
 
             if (file_put_contents($filename, $left . $fnc . $right)) {
+                chmod($filename, 0777);
                 $this->log($action . 'Action,创建成功');
             } else {
                 $this->log($action . 'Action,创建失败');

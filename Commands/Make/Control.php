@@ -66,6 +66,7 @@ class Control extends KernelCommand
             $this->log('创建失败,控制器已存在:' . realpath($filename));
         } else {
             file_put_contents($controllerPath . DIRECTORY_SEPARATOR . $controller . '.php', $text);
+            chmod($controllerPath, 0777);
             $this->log('创建成功:' . realpath($filename));
         }
 
